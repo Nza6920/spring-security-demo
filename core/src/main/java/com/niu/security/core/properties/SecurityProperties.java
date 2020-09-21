@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 描述
+ * 参数配置类
  *
  * @author [nza]
  * @version 1.0 2020/9/20
@@ -14,7 +14,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SecurityProperties {
 
+    /**
+     * 浏览器相关配置
+     */
     private BrowserProperties browser = new BrowserProperties();
+
+    /**
+     * 验证码相关配置
+     */
+    private ValidateCodeProperties code = new ValidateCodeProperties();
 
     public BrowserProperties getBrowser() {
         return browser;
@@ -24,5 +32,11 @@ public class SecurityProperties {
         this.browser = browser;
     }
 
+    public ValidateCodeProperties getCode() {
+        return code;
+    }
 
+    public void setCode(ValidateCodeProperties code) {
+        this.code = code;
+    }
 }

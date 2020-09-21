@@ -1,13 +1,13 @@
 package com.niu.security.browser.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.niu.security.browser.support.SimpleResponse;
 import com.niu.security.core.properties.LoginType;
 import com.niu.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -42,7 +42,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         if (LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())) {
             resp.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             resp.setContentType("application/json;charset=UTF-8");
-            resp.getWriter().write(objectMapper.writeValueAsString(e));
+            resp.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(e.getMessage())));
         } else {
             super.onAuthenticationFailure(req, resp, e);
         }

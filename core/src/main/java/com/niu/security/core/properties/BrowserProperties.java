@@ -1,7 +1,7 @@
 package com.niu.security.core.properties;
 
 /**
- * 描述
+ * 浏览器模块配置
  *
  * @author [nza]
  * @version 1.0 2020/9/20
