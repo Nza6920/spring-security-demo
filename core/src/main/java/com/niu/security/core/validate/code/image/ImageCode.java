@@ -1,5 +1,6 @@
-package com.niu.security.core.validate.code;
+package com.niu.security.core.validate.code.image;
 
+import com.niu.security.core.validate.code.ValidateCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -17,37 +18,22 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
-public class ImageCode {
+public class ImageCode extends ValidateCode {
 
     public ImageCode(BufferedImage image, String code, int expireTime) {
+        super(code, expireTime);
         this.image = image;
-        this.code = code;
-        this.expireTime = LocalDateTime.now().plusSeconds(expireTime);
+
     }
 
     public ImageCode(BufferedImage image, String code, LocalDateTime expireTime) {
+        super(code, expireTime);
         this.image = image;
-        this.code = code;
-        this.expireTime = expireTime;
+
     }
 
     /**
      * 图片
      */
     private BufferedImage image;
-
-    /**
-     * 随机数
-     */
-    private String code;
-
-    /**
-     * 过期时间
-     */
-    private LocalDateTime expireTime;
-
-    public boolean isExpried() {
-        return LocalDateTime.now().isAfter(expireTime);
-    }
-
 }

@@ -1,8 +1,7 @@
-package com.niu.security.core.validate.code;
+package com.niu.security.core.validate.code.image;
 
 import com.niu.security.core.properties.SecurityProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.niu.security.core.validate.code.ValidateCodeGenerator;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -17,7 +16,7 @@ import java.util.Random;
  * @version 1.0 2020/9/21
  * @createTime 2020/9/21
  */
-public class ImageCodeGeneratorImpl implements ValidateCodeGenerator{
+public class ImageCodeGeneratorImpl implements ValidateCodeGenerator {
 
     public ImageCodeGeneratorImpl(SecurityProperties securityProperties) {
         this.securityProperties = securityProperties;
@@ -59,7 +58,6 @@ public class ImageCodeGeneratorImpl implements ValidateCodeGenerator{
 
         return new ImageCode(image, sRand.toString(), 60);
     }
-
 
     /**
      * 生成随机背景条纹

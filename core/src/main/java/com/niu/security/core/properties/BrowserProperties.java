@@ -15,6 +15,11 @@ public class BrowserProperties {
     private String loginPage = "/my-login.html";
 
     /**
+     * 记住我时间
+     */
+    private int rememberMeSeconds = 3600;
+
+    /**
      * 登陆类型
      */
     private LoginType loginType = LoginType.JSON;
@@ -33,5 +38,13 @@ public class BrowserProperties {
 
     public void setLoginType(LoginType loginType) {
         this.loginType = loginType;
+    }
+
+    public int getRememberMeSeconds() {
+        return rememberMeSeconds;
+    }
+
+    public void setRememberMeSeconds(int rememberMeSeconds) {
+        this.rememberMeSeconds = rememberMeSeconds;
     }
 }
