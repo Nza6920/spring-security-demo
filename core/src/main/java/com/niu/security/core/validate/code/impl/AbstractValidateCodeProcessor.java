@@ -52,7 +52,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     }
 
     private void save(ServletWebRequest request, C validateCode) {
-        sessionStrategy.setAttribute(request, getSessionKey(request), validateCode);
+        sessionStrategy.setAttribute(request, getSessionKey(request), new ValidateCode(validateCode.getCode(), validateCode.getExpireTime()));
     }
 
 

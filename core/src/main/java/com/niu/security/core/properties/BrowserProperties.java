@@ -26,6 +26,12 @@ public class BrowserProperties {
      */
     private LoginType loginType = LoginType.JSON;
 
+
+    /**
+     * session 相关
+     */
+    private SessionProperties session = new SessionProperties();
+
     public String getLoginPage() {
         return loginPage;
     }
@@ -56,5 +62,13 @@ public class BrowserProperties {
 
     public void setSignUpPage(String signUpPage) {
         this.signUpPage = signUpPage;
+    }
+
+    public SessionProperties getSession() {
+        return session;
+    }
+
+    public void setSession(SessionProperties session) {
+        this.session = session;
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.nio.charset.Charset;
 
 /**
- * 描述
+ * 适配QQ Oauth 接口响应
  *
  * @author [nza]
  * @version 1.0 2020/10/3

@@ -4,6 +4,7 @@ import com.niu.security.core.authentication.AbstractChannelSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.niu.security.core.properties.SecurityConstants;
 import com.niu.security.core.properties.SecurityProperties;
+import com.niu.security.core.session.CustomExpiredSessionStrategy;
 import com.niu.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -70,10 +71,19 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         securityProperties.getBrowser().getLoginPage(),
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
                         securityProperties.getBrowser().getSignUpPage(),
-                        "/user/register")
+                        "/user/register",
+                        "/session/invalid")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
+                .and()
+                .sessionManagement()
+                // session 失效跳转
+                .invalidSessionUrl(securityProperties.getBrowser().getSession().getSessionInvalidUrl())
+                .maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions())
+                .maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
+                .expiredSessionStrategy(new CustomExpiredSessionStrategy())
+                .and()
                 .and()
                 .csrf().disable();
     }
