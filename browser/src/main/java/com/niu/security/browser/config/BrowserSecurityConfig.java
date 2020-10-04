@@ -1,5 +1,6 @@
 package com.niu.security.browser.config;
 
+import com.niu.security.browser.logout.CustomLogoutSuccessHandler;
 import com.niu.security.core.authentication.AbstractChannelSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.niu.security.core.properties.SecurityConstants;
@@ -84,6 +85,11 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
                 .expiredSessionStrategy(new CustomExpiredSessionStrategy())
                 .and()
+                .and()
+                .logout()
+                .logoutUrl("/signOut")
+                .logoutSuccessHandler(new CustomLogoutSuccessHandler(securityProperties.getBrowser().getSignOutUrl()))
+                .deleteCookies("JSESSIONID")
                 .and()
                 .csrf().disable();
     }

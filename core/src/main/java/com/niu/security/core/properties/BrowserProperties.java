@@ -16,6 +16,8 @@ public class BrowserProperties {
 
     private String signUpPage = "/my-signUp.html";
 
+    private String signOutUrl;
+
     /**
      * 记住我时间
      */
@@ -70,5 +72,13 @@ public class BrowserProperties {
 
     public void setSession(SessionProperties session) {
         this.session = session;
+    }
+
+    public String getSignOutUrl() {
+        return signOutUrl;
+    }
+
+    public void setSignOutUrl(String signOutUrl) {
+        this.signOutUrl = signOutUrl;
     }
 }
