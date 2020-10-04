@@ -1,7 +1,5 @@
 package com.niu.security.core.social.qq.api;
 
-import java.io.IOException;
-
 /**
  * QQ
  *
@@ -13,6 +11,7 @@ public interface QQ {
 
     /**
      * 获取用户信息
+     *
      * @return
      */
     QQUserInfo getUserInfo();

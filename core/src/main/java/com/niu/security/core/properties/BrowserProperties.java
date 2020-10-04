@@ -14,6 +14,8 @@ public class BrowserProperties {
      */
     private String loginPage = "/my-login.html";
 
+    private String signUpPage = "/my-signUp.html";
+
     /**
      * 记住我时间
      */
@@ -46,5 +48,13 @@ public class BrowserProperties {
 
     public void setRememberMeSeconds(int rememberMeSeconds) {
         this.rememberMeSeconds = rememberMeSeconds;
+    }
+
+    public String getSignUpPage() {
+        return signUpPage;
+    }
+
+    public void setSignUpPage(String signUpPage) {
+        this.signUpPage = signUpPage;
     }
 }

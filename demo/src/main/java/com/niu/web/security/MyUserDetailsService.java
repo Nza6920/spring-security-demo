@@ -1,4 +1,4 @@
-package com.niu.security.browser.service;
+package com.niu.web.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
