@@ -1,7 +1,7 @@
 package com.niu.security.browser.logout;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.niu.security.browser.support.SimpleResponse;
+import com.niu.security.core.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.Authentication;

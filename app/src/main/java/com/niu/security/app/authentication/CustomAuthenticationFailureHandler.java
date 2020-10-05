@@ -1,9 +1,9 @@
-package com.niu.security.browser.authentication;
+package com.niu.security.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.niu.security.core.support.SimpleResponse;
 import com.niu.security.core.properties.LoginType;
 import com.niu.security.core.properties.SecurityProperties;
+import com.niu.security.core.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

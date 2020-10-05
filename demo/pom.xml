@@ -12,9 +12,14 @@
     <artifactId>demo</artifactId>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.niu.security</groupId>-->
+            <!--<artifactId>browser</artifactId>-->
+            <!--<version>${niu.security.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.niu.security</groupId>
-            <artifactId>browser</artifactId>
+            <artifactId>app</artifactId>
             <version>${niu.security.version}</version>
         </dependency>
         <dependency>

@@ -1,6 +1,6 @@
 package com.niu.security.browser.controller;
 
-import com.niu.security.browser.support.SimpleResponse;
+import com.niu.security.core.support.SimpleResponse;
 import com.niu.security.browser.support.SocialUserInfo;
 import com.niu.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;

@@ -1,9 +1,9 @@
-package com.niu.security.browser.support;
+package com.niu.security.core.support;
 
 import lombok.Data;
 
 /**
- * 描述
+ * 统一响应
  *
  * @author [nza]
  * @version 1.0 2020/9/20

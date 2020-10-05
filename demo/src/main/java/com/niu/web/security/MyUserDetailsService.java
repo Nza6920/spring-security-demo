@@ -39,7 +39,7 @@ public class MyUserDetailsService implements UserDetailsService, SocialUserDetai
                 true,
                 true,
                 true,
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_USER"));
     }
 
     @Override
@@ -53,6 +53,6 @@ public class MyUserDetailsService implements UserDetailsService, SocialUserDetai
                 true,
                 true,
                 true,
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_USER"));
     }
 }
