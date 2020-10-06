@@ -1,6 +1,6 @@
 package com.niu.security.app;
 
-import com.niu.security.app.social.openid.OpenIdAuthenticationSecurityConfig;
+import com.niu.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.niu.security.core.properties.SecurityConstants;
 import com.niu.security.core.properties.SecurityProperties;
@@ -73,7 +73,8 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
                         SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
                         securityProperties.getBrowser().getSignUpPage(),
                         "/user/register",
-                        "/session/invalid")
+                        "/session/invalid",
+                        "/social/signUp")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

@@ -1,4 +1,4 @@
-package com.niu.security.app.social.openid;
+package com.niu.security.app.authentication.openid;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.security.authentication.AuthenticationProvider;

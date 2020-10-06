@@ -1,4 +1,4 @@
-package com.niu.security.browser.support;
+package com.niu.security.core.support;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

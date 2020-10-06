@@ -1,4 +1,4 @@
-package com.niu.security.app.social.openid.impl;
+package com.niu.security.app.social;
 
 import com.niu.security.core.social.SocialAuthenticationFilterPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;

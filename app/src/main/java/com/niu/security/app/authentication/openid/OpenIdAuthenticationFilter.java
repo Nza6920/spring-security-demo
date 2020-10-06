@@ -1,4 +1,4 @@
-package com.niu.security.app.social.openid;
+package com.niu.security.app.authentication.openid;
 
 import com.niu.security.core.properties.SecurityConstants;
 import org.springframework.security.authentication.AuthenticationServiceException;

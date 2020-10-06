@@ -2,6 +2,7 @@ package com.niu.web.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.common.collect.Lists;
+import com.niu.security.app.social.AppSignUpUtils;
 import com.niu.web.dto.UserDTO;
 import com.niu.web.dto.UserQueryDTO;
 import io.swagger.annotations.ApiOperation;
@@ -38,6 +39,9 @@ public class UserController {
 
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
+
+    @Autowired
+    private AppSignUpUtils appSignUpUtils;
 
     @GetMapping("/me")
     public Object getCurrentUser(@AuthenticationPrincipal UserDetails user) {
@@ -114,6 +118,9 @@ public class UserController {
         // 拿到用户唯一标识
         String username = user.getUsername();
         // 将注册后的用户回传给spring social
-        providerSignInUtils.doPostSignUp(username, new ServletWebRequest(request));
+//        providerSignInUtils.doPostSignUp(username, new ServletWebRequest(request));
+
+        // app 注册
+        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), username);
     }
 }
