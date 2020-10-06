@@ -37,6 +37,9 @@ public class SocialConfig extends SocialConfigurerAdapter {
     @Autowired(required = false)
     private ConnectionSignUp connectionSignUp;
 
+    @Autowired(required = false)
+    private SocialAuthenticationFilterPostProcessor postProcessor;
+
     @Primary
     @Bean
     @Override
@@ -53,7 +56,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
         CustomSpringSocialConfigurer configurer = new CustomSpringSocialConfigurer(
                 securityProperties.getSocial().getFilterProcessUrl());
         configurer.signupUrl(securityProperties.getBrowser().getSignUpPage());
-
+        configurer.setPostProcessor(postProcessor);
         return configurer;
     }
 

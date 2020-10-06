@@ -1,5 +1,6 @@
 package com.niu.security.app;
 
+import com.niu.security.app.social.openid.OpenIdAuthenticationSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.niu.security.core.properties.SecurityConstants;
 import com.niu.security.core.properties.SecurityProperties;
@@ -7,7 +8,6 @@ import com.niu.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -44,14 +44,20 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Autowired
     private SpringSocialConfigurer customSocialSecurityConfig;
 
+    @Autowired
+    private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
+        // 表单登陆配置
         http.formLogin()
                 .loginPage(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
                 .loginProcessingUrl(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_FORM)
                 .successHandler(customAuthenticationSuccessHandler)
-                .failureHandler(customAuthenticationFailureHandler)
+                .failureHandler(customAuthenticationFailureHandler);
+
+        http.apply(openIdAuthenticationSecurityConfig)
                 .and()
                 .apply(validateCodeSecurityConfig)
                 .and()

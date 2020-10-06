@@ -1,4 +1,4 @@
-package com.niu.security.app.validate;
+package com.niu.security.app.validate.code.impl;
 
 import com.niu.security.core.validate.code.ValidateCode;
 import com.niu.security.core.validate.code.ValidateCodeException;
