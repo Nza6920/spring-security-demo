@@ -113,6 +113,7 @@ public class UserController {
 
     @PostMapping("/register")
     public void register(UserDTO user, HttpServletRequest request) {
+        
         log.info("用户注册");
 
         // 拿到用户唯一标识
