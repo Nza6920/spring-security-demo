@@ -83,7 +83,5 @@ public class CustomAuthorizationServerConfig extends AuthorizationServerConfigur
 
             }
         }
-
-
     }
 }

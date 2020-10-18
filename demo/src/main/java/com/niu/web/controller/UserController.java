@@ -2,7 +2,6 @@ package com.niu.web.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.common.collect.Lists;
-import com.niu.security.app.social.AppSignUpUtils;
 import com.niu.security.core.properties.SecurityProperties;
 import com.niu.web.dto.UserDTO;
 import com.niu.web.dto.UserQueryDTO;
@@ -45,13 +44,13 @@ public class UserController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
 
-    @Autowired
-    private AppSignUpUtils appSignUpUtils;
+//    @Autowired
+//    private AppSignUpUtils appSignUpUtils;
 
     @Autowired
     private SecurityProperties securityProperties;
 
-    @GetMapping("/me")
+    @GetMapping("jwt/me")
     public Object getCurrentUser(Authentication user, HttpServletRequest request) {
 
         // 解析jwt
@@ -66,6 +65,12 @@ public class UserController {
         log.info("user: {}", user);
 
         return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    @GetMapping("session/me")
+    public Object getCurrentUser(Authentication user) {
+
+        return user;
     }
 
     @DeleteMapping("{id:\\d+}")
@@ -140,6 +145,6 @@ public class UserController {
 //        providerSignInUtils.doPostSignUp(username, new ServletWebRequest(request));
 
         // app 注册
-        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), username);
+//        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), username);
     }
 }

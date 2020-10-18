@@ -3,6 +3,7 @@ package com.niu.security.browser.config;
 import com.niu.security.browser.logout.CustomLogoutSuccessHandler;
 import com.niu.security.core.authentication.AbstractChannelSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.niu.security.core.authorize.AuthorizeConfigManager;
 import com.niu.security.core.properties.SecurityConstants;
 import com.niu.security.core.properties.SecurityProperties;
 import com.niu.security.core.session.CustomExpiredSessionStrategy;
@@ -10,6 +11,7 @@ import com.niu.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
@@ -43,9 +45,11 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
-
     @Autowired
     private SpringSocialConfigurer customSocialSecurityConfig;
+
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -63,19 +67,6 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
                 .userDetailsService(userDetailsService)
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-                        SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-                        securityProperties.getBrowser().getLoginPage(),
-                        SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
-                        securityProperties.getBrowser().getSignUpPage(),
-                        "/user/register",
-                        "/session/invalid")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
                 .sessionManagement()
                 // session 失效跳转
                 .invalidSessionUrl(securityProperties.getBrowser().getSession().getSessionInvalidUrl())
@@ -90,6 +81,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .deleteCookies("JSESSIONID")
                 .and()
                 .csrf().disable();
+
+        // 配置请求权限
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 
 

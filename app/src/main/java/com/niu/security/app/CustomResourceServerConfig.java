@@ -2,6 +2,7 @@ package com.niu.security.app;
 
 import com.niu.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import com.niu.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.niu.security.core.authorize.AuthorizeConfigManager;
 import com.niu.security.core.properties.SecurityConstants;
 import com.niu.security.core.properties.SecurityProperties;
 import com.niu.security.core.validate.code.ValidateCodeSecurityConfig;
@@ -47,6 +48,9 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Autowired
     private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
 
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
@@ -65,20 +69,9 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .and()
                 .apply(customSocialSecurityConfig)
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-                        SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-                        securityProperties.getBrowser().getLoginPage(),
-                        SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
-                        securityProperties.getBrowser().getSignUpPage(),
-                        "/user/register",
-                        "/session/invalid",
-                        "/social/signUp")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
                 .csrf().disable();
+
+        // 配置请求权限
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 }

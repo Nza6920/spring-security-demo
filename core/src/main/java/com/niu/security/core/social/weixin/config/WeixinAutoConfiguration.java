@@ -17,7 +17,7 @@ import org.springframework.web.servlet.View;
 /**
  * 微信登录配置
  *
- * @author zhailiang
+ * @author nza
  */
 @Configuration
 @ConditionalOnProperty(prefix = "niu.security.social.weixin", name = "app-id")

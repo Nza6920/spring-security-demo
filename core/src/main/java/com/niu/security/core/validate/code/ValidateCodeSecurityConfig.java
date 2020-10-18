@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.niu.security.core.validate.code;
 
 import javax.servlet.Filter;

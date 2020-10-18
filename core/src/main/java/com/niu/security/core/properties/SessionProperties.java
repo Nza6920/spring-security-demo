@@ -1,10 +1,8 @@
-/**
- * 
- */
+
 package com.niu.security.core.properties;
 
 /**
- * @author zhailiang
+ * @author nza
  *
  */
 public class SessionProperties {
