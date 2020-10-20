@@ -13,12 +13,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @createTime 2020/9/19
  */
 @SpringBootApplication
-@RestController
 @EnableSwagger2
 public class MainApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MainApplication.class, args);
     }
-
 }

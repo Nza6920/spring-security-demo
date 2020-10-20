@@ -36,16 +36,17 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
         super.setAuthenticated(true);
     }
 
-
     @Override
     public Object getCredentials() {
         return null;
     }
 
+    @Override
     public Object getPrincipal() {
         return this.principal;
     }
 
+    @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
         if (isAuthenticated) {
             throw new IllegalArgumentException("Cannot set this token to trusted - use constructor which takes a GrantedAuthority list instead");
@@ -54,6 +55,7 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
         }
     }
 
+    @Override
     public void eraseCredentials() {
         super.eraseCredentials();
     }

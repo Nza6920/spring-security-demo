@@ -25,5 +25,4 @@ public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter 
                 .successHandler(customAuthenticationSuccessHandler)
                 .failureHandler(customAuthenticationFailureHandler);
     }
-
 }

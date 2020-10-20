@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.Date;
 
 /**
  * 描述
@@ -30,8 +29,7 @@ public class FileController {
         System.out.println(file.getOriginalFilename());
         System.out.println(file.getSize());
 
-
-        File localFile = new File(folder, new Date().getTime() + ".txt");
+        File localFile = new File(folder, System.currentTimeMillis() + ".txt");
 
         file.transferTo(localFile);
 

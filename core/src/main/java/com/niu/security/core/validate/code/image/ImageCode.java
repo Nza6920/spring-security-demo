@@ -2,6 +2,7 @@ package com.niu.security.core.validate.code.image;
 
 import com.niu.security.core.validate.code.ValidateCode;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class ImageCode extends ValidateCode {
 
     private static final long serialVersionUID = 807900290364374277L;

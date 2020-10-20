@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 短信登陆过滤器
  *
- * @author [nza]
+ * @author [nza]a
  * @version 1.0 2020/10/2
  * @createTime 2020/10/2
  */
@@ -31,6 +31,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
         super(new AntPathRequestMatcher(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE, "POST"));
     }
 
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (this.postOnly && !request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());

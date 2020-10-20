@@ -23,8 +23,10 @@ import java.io.IOException;
 public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private String openIdParameter = SecurityConstants.DEFAULT_PARAMETER_NAME_OPENID;
-    private String providerIdParameter = SecurityConstants.DEFAULT_PARAMETER_NAME_PROVIDERID;
+    private String providerIdParameter = SecurityConstants.DEFAULT_PARAMETER_NAME_PROVIDER_ID;
     private boolean postOnly = true;
+
+    private static final String POST = "POST";
 
     protected OpenIdAuthenticationFilter() {
         super(new AntPathRequestMatcher(SecurityConstants.DEFAULT_SIGN_IN_PROCESSING_URL_OPENID, "POST"));
@@ -32,7 +34,7 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        if (postOnly && !request.getMethod().equals("POST")) {
+        if (postOnly && !POST.equals(request.getMethod())) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
 

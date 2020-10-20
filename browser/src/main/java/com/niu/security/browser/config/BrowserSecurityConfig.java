@@ -92,7 +92,6 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .csrf().disable();
     }
 
-
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         // 记住我

@@ -27,10 +27,4 @@ public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode>
     protected void send(ServletWebRequest request, ImageCode imageCode) throws Exception {
         ImageIO.write(imageCode.getImage(), "JPEG", request.getResponse().getOutputStream());
     }
-
-
-    @Override
-    public void validate(ServletWebRequest servletWebRequest) {
-
-    }
 }
