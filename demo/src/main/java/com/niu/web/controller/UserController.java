@@ -20,11 +20,9 @@ import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +55,8 @@ public class UserController {
         String header = request.getHeader("Authorization");
         String token = StringUtils.substringAfter(header, "bearer ");
         Claims claims = Jwts.parser().setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes(StandardCharsets.UTF_8))
-                .parseClaimsJws(token).getBody();
+                .parseClaimsJws(token)
+                .getBody();
         String company = (String) claims.get("company");
 
         log.info("company: {}", company);

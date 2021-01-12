@@ -1,6 +1,7 @@
 package com.niu.security.app.authentication.openid;
 
 import com.niu.security.core.properties.SecurityConstants;
+import org.bouncycastle.jcajce.util.ProviderJcaJceHelper;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -33,7 +34,7 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if (postOnly && !POST.equals(request.getMethod())) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
@@ -94,7 +95,6 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
         Assert.hasText(openIdParameter, "Username parameter must not be empty or null");
         this.openIdParameter = openIdParameter;
     }
-
 
     /**
      * Defines whether only HTTP POST requests will be allowed by this filter.

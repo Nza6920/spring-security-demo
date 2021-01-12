@@ -45,7 +45,7 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     /**
      * @param request
      * @param type
-     * @return
+     * @return {@link String}
      */
     private String buildKey(ServletWebRequest request, ValidateCodeType type) {
         String deviceId = request.getHeader("deviceId");

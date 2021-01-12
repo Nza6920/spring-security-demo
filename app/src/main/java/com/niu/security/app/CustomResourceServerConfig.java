@@ -35,7 +35,6 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Autowired
     private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
-
     @Autowired
     private AuthenticationSuccessHandler customAuthenticationSuccessHandler;
 

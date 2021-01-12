@@ -38,15 +38,15 @@ public class OpenIdAuthenticationSecurityConfig extends SecurityConfigurerAdapte
     @Override
     public void configure(HttpSecurity http) {
 
-        OpenIdAuthenticationFilter OpenIdAuthenticationFilter = new OpenIdAuthenticationFilter();
-        OpenIdAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
-        OpenIdAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
-        OpenIdAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+        OpenIdAuthenticationFilter openIdAuthenticationFilter = new OpenIdAuthenticationFilter();
+        openIdAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
+        openIdAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
+        openIdAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
 
-        OpenIdAuthenticationProvider OpenIdAuthenticationProvider = new OpenIdAuthenticationProvider(userDetailsService, usersConnectionRepository);
+        OpenIdAuthenticationProvider openIdAuthenticationProvider = new OpenIdAuthenticationProvider(userDetailsService, usersConnectionRepository);
 
-        http.authenticationProvider(OpenIdAuthenticationProvider)
-                .addFilterAfter(OpenIdAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.authenticationProvider(openIdAuthenticationProvider)
+                .addFilterAfter(openIdAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 }

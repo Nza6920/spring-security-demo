@@ -25,7 +25,6 @@ public class OpenIdAuthenticationProvider implements AuthenticationProvider {
 
     private UsersConnectionRepository usersConnectionRepository;
 
-
     public OpenIdAuthenticationProvider(SocialUserDetailsService userDetailsService, UsersConnectionRepository usersConnectionRepository) {
         this.userDetailsService = userDetailsService;
         this.usersConnectionRepository = usersConnectionRepository;
