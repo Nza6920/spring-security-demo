@@ -22,7 +22,6 @@ public class CoreAuthorizeConfigManager implements AuthorizeConfigManager {
     @Autowired
     private List<AuthorizeConfigProvider> authorizeConfigProviders;
 
-
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
 
@@ -32,8 +31,7 @@ public class CoreAuthorizeConfigManager implements AuthorizeConfigManager {
         for (AuthorizeConfigProvider authorizeConfigProvider : authorizeConfigProviders) {
             boolean currentIsAnyRequestConfig = authorizeConfigProvider.config(config);
             if (existAnyRequestConfig && currentIsAnyRequestConfig) {
-                throw new RuntimeException("重复的anyRequest配置:" + existAnyRequestConfigName + ","
-                        + authorizeConfigProvider.getClass().getSimpleName());
+                throw new RuntimeException("重复的anyRequest配置:" + existAnyRequestConfigName + "," + authorizeConfigProvider.getClass().getSimpleName());
             } else if (currentIsAnyRequestConfig) {
                 existAnyRequestConfig = true;
                 existAnyRequestConfigName = authorizeConfigProvider.getClass().getSimpleName();

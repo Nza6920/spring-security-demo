@@ -22,11 +22,6 @@
             <artifactId>authorize</artifactId>
             <version>${niu.security.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.niu.security</groupId>-->
-            <!--<artifactId>app</artifactId>-->
-            <!--<version>${niu.security.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

@@ -20,7 +20,8 @@ public class DemoAuthorizeConfigProvider implements AuthorizeConfigProvider {
     public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
 
         // 表达式校验
-        config.anyRequest().access("@rbacService.hasPermission(request, authentication)");
+        config.anyRequest()
+                .access("@rbacService.hasPermission(request, authentication)");
 
         return true;
     }
